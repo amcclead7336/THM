@@ -1,0 +1,84 @@
+# Nmap 7.91 scan initiated Sun Jan 10 20:19:20 2021 as: nmap -Pn -sT -sV -A -T5 -vv -oA inital 10.10.42.105
+Nmap scan report for 10.10.42.105
+Host is up, received user-set (0.21s latency).
+Scanned at 2021-01-10 20:19:21 EST for 42s
+Not shown: 997 filtered ports
+Reason: 997 no-responses
+PORT     STATE SERVICE            REASON  VERSION
+80/tcp   open  http               syn-ack Microsoft IIS httpd 7.5
+| http-methods: 
+|   Supported Methods: OPTIONS TRACE GET HEAD POST
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/7.5
+|_http-title: Site doesn't have a title (text/html).
+3389/tcp open  ssl/ms-wbt-server? syn-ack
+| ssl-cert: Subject: commonName=alfred
+| Issuer: commonName=alfred
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha1WithRSAEncryption
+| Not valid before: 2020-10-02T14:42:05
+| Not valid after:  2021-04-03T14:42:05
+| MD5:   fdb2 cd17 fad1 160d 06bc c1d8 31f3 7636
+| SHA-1: 6577 409f 2b1a 3e36 7ca7 4449 57f2 98c1 8750 3a3e
+| -----BEGIN CERTIFICATE-----
+| MIIC0DCCAbigAwIBAgIQH2x5JEL9daJC/GWsL/65MDANBgkqhkiG9w0BAQUFADAR
+| MQ8wDQYDVQQDEwZhbGZyZWQwHhcNMjAxMDAyMTQ0MjA1WhcNMjEwNDAzMTQ0MjA1
+| WjARMQ8wDQYDVQQDEwZhbGZyZWQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEK
+| AoIBAQDwqCu1r5JwNiuelrl1s018MjkydEPIHmhpy2pWh0/wB8aqhHt8bcI48XVd
+| 4RBDuij/sy9W9S0LQ6ZtKMzaRlq5mDUx/wPX3p3BRAk6keiqPOOkaOv9DSOQUWzS
+| ON4Oz9ICj0zO9QjLZHa4IlcGdlhblzxG+jGX/SZ8gjVOzlQVqU1W+OKt7N6YFEkD
+| lJsvnc/cP7V82KbuZiskeLdLtHdKtdVYrR6AdO0ZTmnotnRprUoP/nvaKVWrP29F
+| a3I15E/W2uJdWer3gdYK/s4NOlasszIcBgMod0PjAdd0+zbBHy4ExhXn3vSHo3yo
+| 1EYZInzAdmD1oOpg3jZqhBisT3i1AgMBAAGjJDAiMBMGA1UdJQQMMAoGCCsGAQUF
+| BwMBMAsGA1UdDwQEAwIEMDANBgkqhkiG9w0BAQUFAAOCAQEA2jHXDxwJLNEy2YiY
+| R+W5D6kG/AJ/GRYmXbTHK/Ht5+sgAd0t5CICOJ8+ixm5xsneB2+goR8Z5Ds4z58D
+| X3sZswHzynx1eqeFxSIdjLpVMHdoFouZ0qvxSExTFXBV80E/csqQobKSHwYBHzl1
+| zs774gm32wvSsWOvKiX8A1WVtWgdhrzGgXOl8WSbVvexVJZgH0S6fP4+2W0Kg+cJ
+| JKjm8RRdRX1ir61VSS+bHDFW9V/9DlkJzmqTMet0TkMmENTX0wiKrEWbcFybeeQR
+| wVf5ECzwP40SAkraA6Ekmk+uU6NTmFqksElMUsbN4wVfRy7f1jPEpC5SCD/Bcsyg
+| alg8EA==
+|_-----END CERTIFICATE-----
+|_ssl-date: 2021-01-11T01:20:02+00:00; 0s from scanner time.
+8080/tcp open  http               syn-ack Jetty 9.4.z-SNAPSHOT
+|_http-favicon: Unknown favicon MD5: 23E8C7BD78E8CD826C5A6073B15068B1
+| http-robots.txt: 1 disallowed entry 
+|_/
+|_http-server-header: Jetty(9.4.z-SNAPSHOT)
+|_http-title: Site doesn't have a title (text/html;charset=utf-8).
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|phone|specialized
+Running (JUST GUESSING): Microsoft Windows 2008|7|8.1|Vista|Phone (90%)
+OS CPE: cpe:/o:microsoft:windows_server_2008:r2:sp1 cpe:/o:microsoft:windows_8 cpe:/o:microsoft:windows_7::sp1 cpe:/o:microsoft:windows_8.1:r1 cpe:/o:microsoft:windows_vista::- cpe:/o:microsoft:windows_vista::sp1 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7
+OS fingerprint not ideal because: Timing level 5 (Insane) used
+Aggressive OS guesses: Microsoft Windows Server 2008 R2 SP1 (90%), Microsoft Windows Server 2008 R2 or Windows 8 (90%), Microsoft Windows 7 SP1 (90%), Microsoft Windows 8.1 R1 (90%), Microsoft Windows Server 2008 R2 (89%), Microsoft Windows Server 2008 R2 SP1 or Windows 8 (89%), Microsoft Windows 7 Professional or Windows 8 (89%), Microsoft Windows 7 SP1 or Windows Server 2008 SP2 or 2008 R2 SP1 (89%), Microsoft Windows Vista SP0 or SP1, Windows Server 2008 SP1, or Windows 7 (89%), Microsoft Windows Vista SP2, Windows 7 SP1, or Windows Server 2008 (89%)
+No exact OS matches for host (test conditions non-ideal).
+TCP/IP fingerprint:
+SCAN(V=7.91%E=4%D=1/10%OT=80%CT=%CU=%PV=Y%G=N%TM=5FFBA7C3%P=x86_64-pc-linux-gnu)
+SEQ(SP=FD%GCD=1%ISR=10B%TI=I%TS=7)
+OPS(O1=M505NW8ST11%O2=M505NW8ST11%O3=M505NW8NNT11%O4=M505NW8ST11%O5=M505NW8ST11%O6=M505ST11)
+WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)
+ECN(R=Y%DF=Y%TG=80%W=2000%O=M505NW8NNS%CC=N%Q=)
+T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)
+T2(R=N)
+T3(R=N)
+T4(R=N)
+U1(R=N)
+IE(R=N)
+
+Uptime guess: 0.002 days (since Sun Jan 10 20:17:10 2021)
+TCP Sequence Prediction: Difficulty=250 (Good luck!)
+IP ID Sequence Generation: Incremental
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 0s
+
+TRACEROUTE (using proto 1/icmp)
+HOP RTT       ADDRESS
+1   253.96 ms 10.2.0.1
+2   ... 30
+
+Read data files from: /usr/bin/../share/nmap
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jan 10 20:20:03 2021 -- 1 IP address (1 host up) scanned in 43.53 seconds

